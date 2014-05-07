@@ -22,7 +22,7 @@ var engine = require('bloggy')(),
 
 // Shown values are the default values
 bloggySummary.maxLength = 300;       // The maximum number of characters for the html-encoded, text-only summary snippet.
-bloggySummary.prefix = '<p>';        // Prepands some text or unencoded strings
+bloggySummary.prefix = '<p>';        // Prepends some text or unencoded strings
 bloggySummary.suffix = ' ...<p>';    // Appends some text or unencoded strings
 
 engine.extendWith(bloggySummary);
