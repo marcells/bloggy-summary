@@ -10,7 +10,8 @@
     }
   ],
   "dependencies": {
-    "minidom": "^0.1.0"
+    "minidom": "^0.1.0",
+    "node-htmlencode": "0.0.1"
   },
   "keywords": [
     "blog",
