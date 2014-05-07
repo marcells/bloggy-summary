@@ -1,16 +1,15 @@
-# bloggy-marked
+# bloggy-summary
 
-> A markdown parser for blog posts in bloggy, a small and lightweight blog engine for node.js.
+> A summary generator for blog posts in bloggy, a small and lightweight blog engine for node.js.
 
 ## Quickstart
 
-That's everything you need. Just call the `engine.extendWith()` function of the bloggy engine.
+That's everything you need. Just call the `engine.extendWith()` function of the bloggy engine. But please ensure to register bloggy-summary with `extendWith()` __after__ you've registerd a rendering engine like `bloggy-marked`.
 
 ```Javascript
 var engine = require('bloggy')();
 
-engine.extendWith(require('bloggy-query'));
-engine.extendWith(require('bloggy-marked')); // Take care that bloggy-marked currently depends on bloggy-query
+engine.extendWith(require('bloggy-summary'));
 ```
 
 ## Additional options
@@ -19,32 +18,14 @@ You're able to change the following settings.
 
 ```Javascript
 var engine = require('bloggy')(),
-    bloggyMarked = require('bloggy-marked');
+    bloggySummary = require('bloggy-summary');
 
-// Enable syntax highlighting of code blocks (using highlight.js)
-bloggyMarked.enableHighlighting();
+// Shown values are the default values
+bloggySummary.maxLength = 300;       // The maximum number of characters for the html-encoded, text-only summary snippet.
+bloggySummary.prefix = '<p>';        // Prepands some text or unencoded strings
+bloggySummary.suffix = ' ...<p>';    // Appends some text or unencoded strings
 
-
-// Make some fixes to the marked renderer to play well with bootstrap (add table and img-thumbnail class and fix image path)
-// engine.setup({
-//     baseDirectory: ...,
-//     entryUrl: ...,
-//     marked: {
-//         imageUrl: 'http://mspi.es/images/blog/{imageUrl}'
-//     },
-//     ...
-// });
-bloggyMarked.enableBootstrapCompatibility();
-
-
-// You can take full control over the parsing process (if you override this function, the two methods above aren't used)
-bloggyMarked.parseMarkdownContent = function (markdownContent, options, callback) {
-    // The options parameter contains engine.getOptions()
-    // Do the markdown parsing here and finish it with
-    callback('htmlContent');
-};
-
-engine.extendWith(bloggyMarked);
+engine.extendWith(bloggySummary);
 
 ```
 
