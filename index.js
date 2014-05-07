@@ -17,7 +17,7 @@ exports.init = function (engine) {
     var original = engine.loadContent;
 
     engine.loadContent = function (entry, content, callback) {
-        original(content, function (transformedContent) {
+        original(entry, content, function (transformedContent) {
             var dom = minidom('<div>' + transformedContent + '</div>'),
                 text = dom.children[0].textContent;
 
