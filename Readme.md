@@ -12,6 +12,10 @@ var engine = require('bloggy')();
 engine.extendWith(require('bloggy-summary'));
 ```
 
+After the content of a blog entry is read, it has to new fields.
+- `summary` contains the html encoded summary up to the defined maximum length (see below)
+- `metaDescription` contains a text-only representation (" is replaced with ') up to a length of about 180 characters. This information can be used to fill the `<meta name="description" content=".......">` tag.
+
 ## Additional options
 
 You're able to change the following settings.
