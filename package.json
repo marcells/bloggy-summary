@@ -1,7 +1,7 @@
 {
   "name": "bloggy-summary",
   "description": "A summary generator for blog posts in bloggy, a small and lightweight blog engine.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Marcell Spies <marcells@gmx.de>",
   "contributors": [
     {
@@ -10,7 +10,7 @@
     }
   ],
   "dependencies": {
-    "minidom": "^0.1.0",
+    "minidom": "1.0.0",
     "node-htmlencode": "0.0.1"
   },
   "keywords": [
