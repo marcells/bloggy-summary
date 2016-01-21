@@ -2,11 +2,14 @@
 
 var minidom = require('minidom'),
     htmlencode = require('node-htmlencode'),
+    mergeLineBreaksAndConvertToTags = function (htmlEncodedContent) {
+        return htmlEncodedContent.replace(/&#10;{2,}/gm, '$1<br />');
+    },
     makeSummary = function (content, maxLength, prefix, suffix) {
         var summary = content
             .substr(0, content.lastIndexOf(' ', maxLength));
 
-        return prefix + htmlencode.htmlEncode(summary).replace(/&#10;/g, '<br />') + suffix;
+        return prefix + mergeLineBreaksAndConvertToTags(htmlencode.htmlEncode(summary)) + suffix;
     },
     makeMetaDescription = function (content) {
         var minimumMetaDescriptionLengthToNextSpace = 180; // http://webdesign.about.com/od/metatags/qt/meta_descriptio.htm
